@@ -14,13 +14,16 @@ plt.rcParams['font.family'] = 'serif'
 ### This parameters can easily be changed ###
 monochrome = False # If True, the chart is produced in light colors and the polygons in gray scale.
 saveExtents = False # Save each polygon plot to a png file?
-saveFigure = False # Save all chart to png file?
+saveFigure = True # Save all chart to png file?
 showTextLabels = True # With or without text telling the number of sides and angle?
 fontSize = 22 # Obvious
-subpol = 100 # Number of turned polygons inside each other
+subpol = 300 # Number of turned polygons inside each other
 nv = [3, 4, 8] # Number of vertices in each row
 rotation = [[0, 2, 40], [0, 2, 15], [0, 2, 22.5]] # Rotation in degrees for inside polygon with respect to the closest outside one
-lineWidth = 0.5 # Obvious
+lineWidth = 0.25 # Obvious
+lineStyle = 'solid' # 'solid', 'dashed' or 'dotted'
+figSize = 20 
+dpi = 100
 ### End easily changeable parameters ###
 
 xlimit = (-0.8, 0.8)
@@ -34,7 +37,7 @@ if monochrome:
     plt.rcParams['font.family'] = 'serif'
 
 fig, ax = plt.subplots(3, 3, # 3 rows and 3 columns
-                       figsize=(20,20), 
+                       figsize=(figSize, figSize), 
                        dpi=100)
 
 # Create row 0
@@ -55,6 +58,7 @@ for col in range(0, 3):
         polyParams = {'facecolor':'none',                                                                                 
           'edgecolor':edgeColor,
           'linewidth':lineWidth,
+          'linestyle':lineStyle,
           'radius': 1/((j+2)**0.4),
           'numVertices': nv[row],
           'xy': (x, y),
@@ -106,6 +110,7 @@ for col in range(0, 3):
         polyParams = {'facecolor':'none',                                                                                 
           'edgecolor':edgeColor,
           'linewidth':lineWidth,
+          'linestyle':lineStyle,
           'radius': 1/((j+2)**0.4),
           'numVertices': nv[row],
           'xy': (x, y),
@@ -157,6 +162,7 @@ for col in range(0, 3):
         polyParams = {'facecolor':'none',                                                                                 
           'edgecolor':edgeColor,
           'linewidth':lineWidth,
+          'linestyle':lineStyle,
           'radius': 1/((j+2)**0.4),
           'numVertices': nv[row],
           'xy': (x, y),
